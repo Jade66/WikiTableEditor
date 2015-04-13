@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>wiki-table-editor</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/table-editor.css">
+</head>
+<body>
+  <div id='content-container'>
+    <h1 id="greeting"></h1>
+    <div id='title-container'>
+      <div id='createNewSettings'>
+        <h2>Create New Table</h2>
+        Rows: <input id='numberOfRows' type='text' value='5' size='2' />&nbsp;&nbsp;&nbsp;Columns: <input id='numberOfColumns' type='text' value='5' size='2' />
+        <input type='checkbox' id='bordersCheckbox' checked='checked' /><label for='bordersCheckbox'>Borders</label>
+        <input type='checkbox' id='headersCheckbox' checked='checked' /><label for='headersCheckbox'>Header Row</label>
+        <input type='checkbox' id='sortableCheckbox' checked='checked' /><label for='sortableCheckbox'>Sortable</label><br/>
+        <br/>
+        <button id='createWikiTable'>Create</button><span class='messageSpan'>Note: Destroys any existing data</span>
+      </div>
+      <span id='appTitle'>MW Wiki Table Editor</span>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div id='tableContainer'></div>
+    <br/>
+    <button id='addRow'>Add Row</button><button id='addColumn'>Add Column</button>
+    <br/>
+    <br/>
+    <br/>
+    <div id='wikiTextContainer'>
+      <span class='messageSpan'>Paste existing wiki markup here, then edit content in table above</span>
+      <br/>
+      <textarea id='outputArea'></textarea>
+    </div>
+  </div>
+  <script src="js/jade-geek-utils.js"></script>
+  <script src="js/wiki-table.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
