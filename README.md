@@ -1,5 +1,5 @@
 # WikiTableEditor
-A quick-and-dirty wiki table editor for internal MathWorks use.
+A quick-and-dirty wiki table editor for certain flavors of wiki.
 
 This is a Chrome packaged app, which allows primitive editing of wiki table content within a spreadsheet-like table.  It is primarily useful when you have a table with more than a few columns, where it can be hard to tell what row/column you are in.
 
