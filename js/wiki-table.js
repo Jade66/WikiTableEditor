@@ -90,6 +90,9 @@
           } else {
             cell = document.createElement("td");
           }
+          cell.id = "R" + currentRow + "C" + currentColumn;
+          cell.columnIndex = currentColumn;
+          cell.rowIndex = currentRow;
           if(!this.hasBorders) {
             cell.classList.add("no-border");
           }
