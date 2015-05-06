@@ -61,7 +61,7 @@
   function handleKeydown(event) {
     var target = event.target;
     if(target.classList && target.classList.contains("wiki-table-input")) {
-      if(event.which && event.shiftKey) {
+      if(event.which && event.altKey) {
         switch(event.which) {
           case 37: //Left Arrow
             if(target.previousSibling) {
