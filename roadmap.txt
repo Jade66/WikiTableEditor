@@ -3,6 +3,5 @@ Things to fix/improve:
 1) The code that reads markup can't handle it if you have hard-returns in your text values.  That is, it is dependent on each line of the markup starting with the characters that start a table row.
 2) Each time one of the editable cells gets focus, it should really select all the content.  Much easier to work with. - DONE
 3) There should be a way to navigate through the table with the keyboard. Can't use the up/down arrows alone because those have to handle mutli-line content.  Maybe shift-up and shift-down? - DONE
-4) The borders/headers/sortable checkboxes should be dynamic.  So should the rows and columns while preserving as much content as possible.
-5) There should be a "clear content" button.
-6) It would be great if you could copy/paste across multiple cells.  FUnky.
+4) The borders/headers/sortable checkboxes should be dynamic.  So should the rows and columns while preserving as much content as possible. - DONE!
+5) There should be a "clear content" button. - DONE!

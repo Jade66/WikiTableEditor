@@ -10,13 +10,15 @@
     <h1 id="greeting"></h1>
     <div id='title-container'>
       <div id='createNewSettings'>
-        <h2>Create New Table</h2>
+        <h2>Table Settings</h2>
+        <span class='messageSpan'>These settings are dynamic.  You can set the table size and options at any time.</span><br/>
+        <br/>
         Rows: <input id='numberOfRows' type='text' value='5' size='2' />&nbsp;&nbsp;&nbsp;Columns: <input id='numberOfColumns' type='text' value='5' size='2' />
         <input type='checkbox' id='bordersCheckbox' checked='checked' /><label for='bordersCheckbox'>Borders</label>
         <input type='checkbox' id='headersCheckbox' checked='checked' /><label for='headersCheckbox'>Header Row</label>
         <input type='checkbox' id='sortableCheckbox' checked='checked' /><label for='sortableCheckbox'>Sortable</label><br/>
         <br/>
-        <button id='createWikiTable'>Create</button><span class='messageSpan'>Note: Destroys any existing data</span>
+        <span class='messageSpan warning'>WARNING: Setting the Rows and Columns to smaller values destroys any data in the removed cells!</span>
       </div>
       <span id='appTitle'>MW Wiki Table Editor</span>
     </div>
@@ -25,7 +27,7 @@
     <br/>
     <div id='tableContainer'></div>
     <br/>
-    <button id='addRow'>Add Row</button><button id='addColumn'>Add Column</button>
+    <button id='addRow'>Add Row</button><button id='addColumn'>Add Column</button><button id='clearData'>Clear Data</button>
     <br/>
     <br/>
     <br/>

@@ -90,14 +90,14 @@
           } else {
             cell = document.createElement("td");
           }
-          cell.id = "R" + currentRow + "C" + currentColumn;
-          cell.columnIndex = currentColumn;
-          cell.rowIndex = currentRow;
           if(!this.hasBorders) {
             cell.classList.add("no-border");
           }
           cell.classList.add("wiki-table-input");
           cell.contentEditable = true;
+          cell.id = "R" + currentRow + "C" + currentColumn;
+          cell.columnIndex = currentColumn;
+          cell.rowIndex = currentRow;
           cell.innerText = this.data[currentRow][currentColumn] || " ";
           row.appendChild(cell);
         }
@@ -141,6 +141,25 @@
       wikiString += "|}";
       return wikiString;
     };
+    
+    var setNumberOfRows = function(newRowCount) {
+      if(newRowCount > this.numberOfRows) {
+        this.addRows(newRowCount - this.numberOfRows);
+      } else {
+        this.removeRows(this.numberOfRows - newRowCount);
+      }
+    };
+    
+    var removeRows = function(numberToRemove) {
+      var newRowCount = this.numberOfRows - numberToRemove;
+      if(newRowCount <= 0) {
+        this.data = [];
+        this.numberOfRows = 0;
+      } else {
+        this.data.length = newRowCount;
+        this.numberOfRows = newRowCount;
+      }
+    };
 
     var addRows = function(numberToAdd) {
       this.numberOfRows += numberToAdd;
@@ -153,6 +172,14 @@
       }
     };
 
+    var setNumberOfColumns = function(newColumnCount) {
+      if(newColumnCount > this.numberOfColumns) {
+        this.addColumns(newColumnCount - this.numberOfColumns);
+      } else {
+        this.removeColumns(this.numberOfColumns - newColumnCount);
+      }
+    };
+    
     var addColumns = function(numberToAdd) {
       this.numberOfColumns += numberToAdd;
       for(var rowIndex in this.data) {
@@ -161,6 +188,20 @@
         }
       }
     };
+    
+    var removeColumns = function(numberToRemove) {
+      var newColumnCount = this.numberOfColumns - numberToRemove;
+      if(newColumnCount <= 0) {
+        this.data = [];
+        this.numberOfColumns = 0;
+      } else {
+        for(var row of this.data) {
+          row.length = newColumnCount;
+        }
+        this.numberOfColumns = newColumnCount;
+      }
+    };
+    
 
     //Default options
     var instance = {
@@ -180,7 +221,11 @@
       toTableElement: toTableElement,
       toWikiString: toWikiString,
       addRows: addRows,
-      addColumns: addColumns
+      removeRows: removeRows,
+      addColumns: addColumns,
+      removeColumns: removeColumns,
+      setNumberOfRows: setNumberOfRows,
+      setNumberOfColumns: setNumberOfColumns
     };
 
     //Now override the defaults with any passed-in options.

@@ -16,6 +16,13 @@
     }
     var tableElement = wikiTable.toTableElement();
     el.appendChild(tableElement);
+    
+    document.getElementById("numberOfRows").value = wikiTable.numberOfRows;
+    document.getElementById("numberOfColumns").value = wikiTable.numberOfColumns;
+    
+    document.getElementById("bordersCheckbox").checked = wikiTable.hasBorders;
+    document.getElementById("headersCheckbox").checked = wikiTable.hasHeaders;
+    document.getElementById("sortableCheckbox").checked = wikiTable.isSortable;
   }
 
   function updateFromTable() {
@@ -90,6 +97,46 @@
       }
     }
   }
+  
+  function handleNumberOfRowsChange(event) {
+    var newRowCount = event.target.value;
+    if(isNaN(newRowCount) || newRowCount < 1) {
+      newRowCount = 1;
+      event.target.value = 1;
+    }
+    wikiTable.setNumberOfRows(newRowCount);
+    outputAsHtmlTable();
+    outputAsWiki();
+  }
+  
+  function handleNumberOfColumnsChange(event) {
+    var newColumnCount = event.target.value;
+    if(isNaN(newColumnCount) || newColumnCount < 1) {
+      newColumnCount = 1;
+      event.target.value = 1;
+    }
+    wikiTable.setNumberOfColumns(newColumnCount);
+    outputAsHtmlTable();
+    outputAsWiki();
+  }
+  
+  function handleBorderChange(event){
+    wikiTable.hasBorders = !!event.target.checked;
+    outputAsHtmlTable();
+    outputAsWiki();
+  }
+  
+  function handleHeaderChange(event){
+    wikiTable.hasHeaders = !!event.target.checked;
+    outputAsHtmlTable();
+    outputAsWiki();
+  }
+  
+  function handleSortableChange(event){
+    wikiTable.isSortable = !!event.target.checked;
+    outputAsHtmlTable();
+    outputAsWiki();
+  }
 
   function createWikiTable() {
     var rows = Number(document.querySelector("#numberOfRows").value);
@@ -117,7 +164,7 @@
     outputAsHtmlTable();
   }
 
-  document.getElementById("createWikiTable").addEventListener("click", createWikiTable);
+  document.getElementById("clearData").addEventListener("click", createWikiTable);
   document.getElementById("addRow").addEventListener("click", addRow);
   document.getElementById("addColumn").addEventListener("click", addColumn);
   document.getElementById("outputArea").addEventListener("change", updateFromWiki);
@@ -125,6 +172,12 @@
   document.getElementById("tableContainer").addEventListener("input", handleInputChange);
   document.getElementById("tableContainer").addEventListener("focusin", handleFocusChange);
   document.getElementById("tableContainer").addEventListener("keydown", handleKeydown);
+  document.getElementById("numberOfRows").addEventListener("change", handleNumberOfRowsChange);
+  document.getElementById("numberOfColumns").addEventListener("change", handleNumberOfColumnsChange);
+  
+  document.getElementById("bordersCheckbox").addEventListener("change", handleBorderChange);
+  document.getElementById("headersCheckbox").addEventListener("change", handleHeaderChange);
+  document.getElementById("sortableCheckbox").addEventListener("change", handleSortableChange);
 
   createWikiTable();
 

@@ -42,3 +42,8 @@ span.messageSpan {
   margin-left: 10px;
   font-style: italic;
 }
+
+span.warning {
+  color: red;
+  font-weight: bold;
+}
